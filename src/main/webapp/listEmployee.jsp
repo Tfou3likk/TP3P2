@@ -33,8 +33,8 @@
 			</tbody>
 		</table>
 		<form action="ListEmployeeServlet" method="post">
-			<input type="submit" value="AddEmployee"> 
-			<input type="submit" value="Logout">
+			<input type="submit" name = "AddEmployee" value="AddEmployee"> 
+			<input type="submit" name = "Logout" value="Logout">
 		</form>
 	
 	</body>

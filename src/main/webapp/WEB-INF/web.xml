@@ -39,4 +39,14 @@
     <servlet-name>ListEmployeeServlet</servlet-name>
     <url-pattern>/ListEmployeeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddEmployeeServlet</display-name>
+    <servlet-name>AddEmployeeServlet</servlet-name>
+    <servlet-class>tp3p2.AddEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddEmployeeServlet</servlet-name>
+    <url-pattern>/AddEmployeeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
