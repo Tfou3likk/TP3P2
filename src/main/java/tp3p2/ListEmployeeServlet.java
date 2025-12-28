@@ -10,15 +10,15 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class ListEmployeeServlet
  */
-public class LoginServlet extends HttpServlet {
+public class ListEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public ListEmployeeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,23 +36,16 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+		HttpSession session =  request.getSession(false);
 		
-		Employee employee = EmployeeDAO.readEmployee(username, password);
+		if(request.getParameter("AddEmployee") != null) {
+			response.sendRedirect("addEmployees.jsp");
+			
+		}
 		
-		HttpSession session = request.getSession();
-		
-		
-		
-		if(employee.getId() != EmployeeDAO.IDNUL) {
-			session.setAttribute("employee", employee);
-			session.setAttribute("username", username);
-			response.sendRedirect(request.getContextPath()+"/welcome.jsp");
-		}else {
-			request.setAttribute("message", "mot de passe ou utilisateur incorrect");
-			//response.sendRedirect(request.getContextPath()+"/index.jsp");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+		if(request.getParameter("Logout")!=null) {
+			session.invalidate();
+			response.sendRedirect("index.jsp");
 		}
 	}
 

@@ -5,7 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Servlet implementation class WelcomeServlet
@@ -35,10 +38,16 @@ public class WelcomeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		HttpSession session = request.getSession(false);
+		
+		ArrayList<Employee> employees = EmployeeDAO.read();
+		
 		if(request.getParameter("Employees") !=null) {
-			response.sendRedirect("/listEmployee.jsp");	
+			session.setAttribute("employees", employees);
+			response.sendRedirect(request.getContextPath()+"/listEmployee.jsp");	
 		}
 		if(request.getParameter("Logout")!=null) {
+			session.invalidate();
 			response.sendRedirect("index.jsp");
 		}
 		

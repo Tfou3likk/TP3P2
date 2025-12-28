@@ -29,4 +29,14 @@
     <servlet-name>WelcomeServlet</servlet-name>
     <url-pattern>/WelcomeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListEmployeeServlet</display-name>
+    <servlet-name>ListEmployeeServlet</servlet-name>
+    <servlet-class>tp3p2.ListEmployeeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListEmployeeServlet</servlet-name>
+    <url-pattern>/ListEmployeeServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
