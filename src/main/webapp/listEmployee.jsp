@@ -22,13 +22,12 @@
 			<tbody>
 	
 				<c:forEach var='employeEnCours' items='${employees}'>
-					<c:if test="${employeEnCours.departement == employee.departement}">
 						<tr>
 							<td><c:out value="${employeEnCours.nom}"></c:out></td>
 							<td><c:out value="${employeEnCours.prenom}"></c:out></td>
 							<td><c:out value="${employeEnCours.departement}"></c:out></td>
 						</tr>
-					</c:if>
+					
 				</c:forEach>
 			</tbody>
 		</table>

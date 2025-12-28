@@ -12,17 +12,18 @@ public class EmployeeDAO {
 	
 	public static int IDNUL = -1;
 	
-	public static ArrayList<Employee> read() {
+	public static ArrayList<Employee> read(String departement) {
 		
 		ArrayList<Employee> employees = new ArrayList<>();
 		
 		try {
-			String requete = "SELECT * FROM employes";
+			String requete = "SELECT * FROM employes WHERE departement = ?";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection cn = DriverManager.getConnection(
 			    "jdbc:mysql://localhost:3306/employees", "root", "");
-			Statement st = cn.createStatement();
-			ResultSet rs = st.executeQuery(requete);
+			PreparedStatement pst = cn.prepareStatement(requete);
+			pst.setString(1, departement);
+			ResultSet rs = pst.executeQuery();
 			
 			while(rs.next()) {
 				Employee employe = new Employee(rs.getInt("id"), rs.getString("username"), rs.getString("nom"), rs.getString("prenom"), rs.getString("password"),rs.getString("departement"));

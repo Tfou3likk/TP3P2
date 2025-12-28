@@ -40,7 +40,9 @@ public class WelcomeServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		
-		ArrayList<Employee> employees = EmployeeDAO.read();
+		Employee employe = (Employee) session.getAttribute("employee");
+		
+		ArrayList<Employee> employees = EmployeeDAO.read(employe.getDepartement());
 		
 		if(request.getParameter("Employees") !=null) {
 			session.setAttribute("employees", employees);
